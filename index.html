@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dictionary App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  </head>
+  <body>
+    <audio id="sound"></audio>
+    <div class="container">
+      <div class="searchBox">
+        <input type="text" placeholder="Type Your Word..." class="inpword" />
+        <button class="searchBtn">Search</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <script>
+      const url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+      const result = document.querySelector(".result");
+      const btn = document.querySelector(".searchBtn");
+      const sound = document.querySelector("#sound");
+
+      btn.addEventListener("click", async () => {
+        const word = document.querySelector(".inpword").value;
+        const response = await fetch(url+word)
+        if(response.ok){
+            let data = await response.json()
+        result.innerHTML = `<div class="word">
+          <h3>${word}</h3>
+          <button onclick="playSound()"><i class="bi bi-volume-up-fill"></i></button>
+        </div>
+        <div class="word-details">
+          <p>${data[0].meanings[0].partOfSpeech}</p>
+          <p>${data[0].phonetic}</p>
+        </div>
+        <div class="other-details">
+          <div class="meaning" style="padding: 10px 0px 0px 0px">${data[0].meanings[0].definitions[0].definition}</div>
+          <div class="example" style="padding: 10px 0px 0px 0px">${data[0].meanings[0].definitions[0].example || ""}</div>
+        </div>`;
+      }else{
+        result.innerHTML="<h3> Word not found </h3>"
+      }
+      sound.setAttribute("src",`https${data[0].phonetics[0].audio}`)
+    });
+    function playSound(){
+        sound.play()
+    }
+    </script>
+  </body>
+</html>

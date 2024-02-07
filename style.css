@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-family: 'Lexend', sans-serif;
+    align-items: center;
+    background: rgb(148,187,233);
+    background: linear-gradient(39deg, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%);
+}
+.container{
+    height: 500px;
+    width: 500px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+.searchBox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+}
+.inpword{
+    height: 35px;
+    width: 300px;
+    border-radius: 12px 0px 0px 12px;
+    text-align: center;
+    font-family: cursive;
+    font-size: 18px;
+}
+.searchBtn{
+    height: 39px;
+    width: 80px;
+    font-size: 18px;
+    border-radius: 0px 12px 12px 0px;
+    cursor: pointer;
+    border-left: none;
+    background-color: blueviolet;
+    color: white;
+}
+.result{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.word{
+    width: 80%;
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.word-details{
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+}
+.other-details{
+    width: 80%;
+}
